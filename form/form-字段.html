@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>表单-字段</title>
+	</head>
+	<body>
+		<p>表单字段又叫表单元素，表示表单含有的所有控件，如input、select。<br>每个表单又有elsments属性，表述该表单的所有元素。这个elements是一个有序列表，表述该表单中所有的控件，注意不包括type为image的input！</p>
+		<form action="#" method="get" name="myform">
+			<input type="text" name="a" value="123"/>
+			<textarea name="b"></textarea>
+			<button type="button" name="c">c</button>
+			<fieldset name="d"></fieldset>
+		</form>
+		<script type="text/javascript">
+			var omyForm = document.forms.myform;
+			var elements = omyForm.elements;
+			console.log(elements);
+			console.log(elements.a);
+			console.log(elements[0]);
+			console.log(elements[0]==elements.a);
+			console.log(elements.c.type); //通过表单内的form[name]属性来获取表单控件对应的其他属性!
+			console.log("------------------------------------");
+			var input = document.forms[0].elements[0];
+			console.log(input.disabled);//false,布尔型,表示当前元素是否被禁用
+			console.log(input.form);//<form action="#"></form>  指向当前字段所属表单的指针,只读.
+			console.log(input.name);//'' 当前字段的名称
+			console.log(input.readOnly);//false，布尔型,表示当前字段是否只读;
+			console.log(input.tabIndex);//0 当前字段的切换序号
+			console.log(input.type);//text 当前字段的类型，如"checkbox"、"radio"等等
+			console.log(input.value);//123 当前字段将被提交给服务器的值
+			console.log(input.defaultValue);//123  表示该表单元素的初始值
+		</script>
+		------------------------------------
+		<p>方法：focus()获取焦点，blur()元素失去焦点，</p><br>
+		<p>事件：focus，blur，change。所有的浏览器的触发顺序都是先change事件，再blur事件</p>
+	</body>
+</html>

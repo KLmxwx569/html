@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>form表单</title>
+	</head>
+	<body>
+		<p>表单里面包含input、menus、textarea、fieldset、legend、label等表单控件元素，表单里面不允许镶嵌表单！</p>
+		<p>form元素属性：accept-charset/action/autocomplate/enctype/method/name/novalidate/target<br>action/name为必须项</p>
+		<p>表单名称：如果name="test"，则JavaScript可以使用document.forms.test来获取该表单</p>
+		<form action="" method="login.php" name="test" accept-charset="unknown">
+			<input type="" name="" id="" value="" />
+		</form>
+		<script type="text/javascript">
+			var oTest = document.forms.test;
+			//console.log(oTest.method);
+			//console.log(oTest.name);
+			console.log(oTest.acceptCharset);
+			console.log(oTest.action);
+			console.log(oTest.enctype);
+			console.log(oTest.elements); //表单中所有元素的集合
+			console.log(oTest.length); //表单中元素的个数
+
+		</script>
+		<p>字符集accept-charset:允许接受的字符集，默认值unknow，意思为字符集与当前文档相同。</p><br>
+		<p>提交地址action：规定表单提交数据时，向何处提交数据；忽略此属性时，会重定向到表单所在url；可以被button和input元素的formaction属性覆盖！</p><br>
+		<p>打开方式target：规定在何处打开action的url。共5个值_blank、_self、_parent、_top、framename</p><br>
+		-------------------------------------------------------------------------------------------------------------------
+		
+		<p>自动完成autocomplete：</p>
+		<button type="button" id="btn1">自动</button><button type="button" id="btn2">非自动</button>
+		<form action="#" method="get" name="myForm">
+			<p><label>x:<input name="x"></label></p>
+			<p><label>y:<input name="y"></label></p>
+			<p><button type="submit">Submit</button></p>
+		</form>
+		<script type="text/javascript">
+			var omyForm = document.forms.myForm;
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			
+			oBtn1.onclick = function(){
+				omyForm.autocomplete = 'on';
+			}
+			oBtn2.onclick = function(){
+				omyForm.autocomplete = 'off';
+			}
+		</script>
+		-------------------------------------------------------------------------------------------------------------------
+		<p>表单事件：reset事件：将所有表单域重置为默认值；submit事件：提交表单</p>
+		<form name="form" action="#">
+			<input name="test" value="1">
+			<input type="reset">
+			<input type="submit">
+		</form>
+		<script>
+		var form = document.forms.form;
+		form.onreset = function(){
+			form.test.value = "2";
+			//若不使用return false阻止默认事件，那么reset将会把form.test的value重新置成1
+			return false;
+		}
+		form.onsubmit = function(){
+			form.test.value = "3";
+		}
+		</script>
+		-------------------------------------------------------------------------------------------------------------------
+		<p>以调用submit()方法提交表单时，不会触发submit事件;与调用submit()方法不同，调用reset()方法会像单击重置按钮一样触发reset事件</p><br />
+		<p>使用type特性值为"reset"的input或button都可以创建重置按钮</p>
+		<form name="oform" action="#">
+			<input name="test" value="1">
+		</form>
+		<button id="btn1">外部提交</button>
+		<button id="btn2">外部重置</button><br />
+		<script>
+		var form = document.forms.oform;
+		form.onreset = function(){
+			form.test.value = "2";
+			return false;
+		}
+		form.onsubmit = function(){form.test.value = "3";}
+		btn1.onclick = function(){form.submit();}  //submit()事件提交的是表单原有的数据值;
+		btn2.onclick = function(){form.reset();}  //reset()事件重置的是处理过后的数据值.
+		</script>
+		-------------------------------------------------------------------------------------------------------------------
+	</body>
+</html>
