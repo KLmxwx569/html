@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>下拉框属性</title>
+	</head>
+	<body>
+		<form action="" id="myForm">
+			<select name="select" id="mySelect">
+				<option>1</option>
+				<option>2</option>
+			</select>
+		</form>
+	</body>
+	<button id="btn">是否多选</button>
+	<script>
+	window.onload = function(){
+		//var select = document.getElementsByName("select");
+		var mySelect = document.getElementById('mySelect');
+		btn.onclick = function(){
+			mySelect.multiple = !mySelect.multiple;
+			//用当前元素的id进行操作!
+		}    
+	}
+	</script>
+	<script type="text/javascript">
+		var mySelect = document.getElementById('mySelect');
+		console.log(mySelect.form);//<form id="myForm">
+		console.log(mySelect.name);//'select'
+		console.log(mySelect.value);//2
+		console.log(mySelect.options);//[option, option, selectedIndex: 1]
+		console.log(mySelect.selectedOptions);//[option]
+		console.log(mySelect.selectedIndex);//1
+		console.log(mySelect.multiple);//false   是否可以多选
+		console.log(mySelect.size);//0
+		console.log(mySelect.autofocus);//false
+		console.log(mySelect.disabled);//false
+	</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+	</head>
+	<body>
+		<select name="test" id="test">
+			<option value="a">1</option>
+			<option value="b">2</option>
+			<option>3</option>
+		</select>
+		<button id="btn1">是否多选</button>
+		<button id="btn2">选中的值</button>
+		<div id="result"></div>
+		<script>
+		btn1.onclick = function(){
+			test.multiple = !test.multiple;
+			
+		}
+			btn2.onclick = function(){
+				//result.innerHTML = test.value;
+				result.innerHTML = test.selectedIndex;  //返回基于0选中项的索引.没有选中项时,返回-1,对于支持多选的控件，只保存选中项中第一项的索引!
+			}
+		</script>
+		、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
+		<select name="test1" id="test1">
+			<option value="a">1</option>
+			<option value="b" selected>2</option>
+			<option>3</option>
+		</select>
+		<button id="abtn1">可见1行</button>
+		<button id="abtn2">可见2行</button>
+		<button id="abtn3">可见3行</button>
+		<script type="text/javascript">
+			window.onload = function(){
+				var mytest1 = document.getElementById("test1");
+				var aBtn1 = document.getElementById("abtn1");
+				var aBtn2 = document.getElementById("abtn2");
+				var aBtn3 = document.getElementById("abtn3");
+				aBtn1.onclick = function(){
+					mytest1.size = 1;   //选择框的可见行数
+				}
+				aBtn2.onclick = function(){
+					mytest1.size = 2;
+				}
+				aBtn3.onclick = function(){
+					mytest1.size = 3;
+				}
+				console.log(mytest1.options); //options：控件中所有的option元素
+				
+				var oOption = mytest1.options[0];
+				console.log(oOption.index);
+				console.log(oOption.label);
+				console.log(oOption.selected);
+				console.log(oOption.value);
+				console.log(oOption.text);
+			}
+		</script>
+		、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
+	</body>
+</html>

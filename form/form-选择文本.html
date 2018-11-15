@@ -6,6 +6,21 @@
 		<title>form--选择文本</title>
 	</head>
 	<body>
-		突然想起来周六那天晚上说要去看电影的事情，为什么你觉得一定要去看你说的那个，我说了不愿意，为什么你还是坚持？如果没有相同的兴趣爱好，就不要勉强了。
+		<p>select()方法、select事件。分段选择文本时，会出现兼容问题！</p>
+		<input type="text" id="text" value="123" /><button type="button" id="btn">选中-方法</button><button type="button" id="btn1">选中-事件</button>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oText = document.getElementById("text");
+				var oBtn = document.getElementById("btn");
+				var oBtn1 = document.getElementById("btn1");
+				oBtn.onclick = function(){
+					oText.select();
+				}
+				oText.onselect = function(){
+					this.style.background = 'red';
+				}
+			}
+			
+		</script>
 	</body>
 </html>
